@@ -68,11 +68,11 @@ Guaranteed platform channel initialization before executing asynchronous BaaS ca
     anonKey: 'YOUR_SUPABASE_ANON_KEY',
     );
    ```
-## Dynamic Hex Color Deserialization
+### Dynamic Hex Color Deserialization
 Parsing server hex-coded strings directly into Flutter-native Color objects:
-```dart
-Color(int.parse(map['color_code']))
-```
+    ```dart
+    Color(int.parse(map['color_code']));
+    ```
 ## 💻 Installation
 Follow these steps to run the project locally:
 
@@ -98,6 +98,7 @@ Run the app:
 flutter run
 ```
 ## 📁 Project Structure
+Plaintext
 lib/
 ├── data/           # Static configuration & onboarding static data
 ├── model/          # Strongly-typed data models (Product, ColorOption)
