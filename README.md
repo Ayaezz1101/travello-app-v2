@@ -60,17 +60,17 @@ This repository represents the **V2 Architecture Refactor** of the Travello appl
 
 ### Native Binding & Service Bootstrapping
 Guaranteed platform channel initialization before executing asynchronous BaaS calls:
-       `dart
+       ```dart
         WidgetsFlutterBinding.ensureInitialized();
         await Supabase.initialize(
         url: 'YOUR_SUPABASE_URL',
         anonKey: 'YOUR_SUPABASE_ANON_KEY',
-        );`
+        );```
 
 ### Dynamic Hex Color Deserialization
 Parsing server hex-coded strings directly into Flutter-native Color objects:
-    `dart
-    Color(int.parse(map['color_code']));`
+    ```dart
+    Color(int.parse(map['color_code']));```
 
 ---
 ## 💻 Installation
@@ -94,6 +94,7 @@ Run the app:
 
 ---
 ## 📁 Project Structure
+Plaintext
 lib/
 ├── data/           # Static configuration & onboarding static data
 ├── model/          # Strongly-typed data models (Product, ColorOption)
@@ -102,4 +103,5 @@ lib/
 ├── srvices/        # Auth & API services encapsulation + Custom Transitions
 ├── theme/          # App ThemeData & design constants
 └── wigets/         # Atomic modular UI components (Cards, TextFields, Buttons)
+
 ---
