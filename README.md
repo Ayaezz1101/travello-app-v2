@@ -30,19 +30,29 @@ This repository represents the **V2 Architecture Refactor** of the Travello appl
 ## 📱 Application Screenshots
 
 ### Splash & Onboarding
-| Splash Screen | Step 1 | Step 2 | Step 3 |
-| :---: | :---: | :---: | :---: |
-| <img src="assets/screenshots/splash.jpg" width="200"/> | <img src="assets/screenshots/onboarding1.jpg" width="200"/> | <img src="assets/screenshots/onboarding2.jpg" width="200"/> | <img src="assets/screenshots/onboarding3.jpg" width="200"/> |
+
+<div align="center">
+  <img src="assets/screenshots/splash.jpg" width="200" />
+  <img src="assets/screenshots/onboarding1.jpg" width="200" />
+  <img src="assets/screenshots/onboarding2.jpg" width="200" />
+  <img src="assets/screenshots/onboarding3.jpg" width="200" />
+</div>
 
 ### Authentication
-| Sign In | Sign Up | Verify (OTP) | Reset Password |
-| :---: | :---: | :---: | :---: |
-| <img src="assets/screenshots/signin.jpg" width="200"/> | <img src="assets/screenshots/signup.jpg" width="200"/> | <img src="assets/screenshots/verify screen.jpg" width="200"/> | <img src="assets/screenshots/reset password.jpg" width="200"/> |
+
+<div align="center">
+  <img src="assets/screenshots/signin.jpg" width="200" />
+  <img src="assets/screenshots/signup.jpg" width="200" />
+  <img src="assets/screenshots/verify%20screen.jpg" width="200" />
+  <img src="assets/screenshots/reset%20password.jpg" width="200" />
+</div>
 
 ### Home & Details
-| Home Screen | Product Details |
-| :---: | :---: |
-| <img src="assets/screenshots/home screen.jpg" width="250"/> | <img src="assets/screenshots/details screen.jpg" width="250"/> |
+
+<div align="center">
+  <img src="assets/screenshots/home%20screen.jpg" width="200" />
+  <img src="assets/screenshots/details%20screen.jpg" width="200" />
+</div>
 
 ---
 
@@ -50,33 +60,35 @@ This repository represents the **V2 Architecture Refactor** of the Travello appl
 
 ### Native Binding & Service Bootstrapping
 Guaranteed platform channel initialization before executing asynchronous BaaS calls:
-```dart
+
 WidgetsFlutterBinding.ensureInitialized();
 await Supabase.initialize(
   url: 'YOUR_SUPABASE_URL',
   anonKey: 'YOUR_SUPABASE_ANON_KEY',
 );
 
-### 💻 Installation
+### Dynamic Hex Color Deserialization
+Parsing server hex-coded strings directly into Flutter-native Color objects:
+
+Color(int.parse(map['color_code']))
+
+## 💻 Installation
 Follow these steps to run the project locally:
 
 Clone the repository:
 
-Bash
 git clone [https://github.com/Ayaezz1101/travello-app-v2.git](https://github.com/Ayaezz1101/travello-app-v2.git)
+
 Navigate to project directory:
-
-Bash
 cd travello-app-v2
+
 Install dependencies:
-
-Bash
 flutter pub get
-Run the app:
 
-Bash
+Run the app:
 flutter run
-📁 Project Structure
+
+## 📁 Project Structure
 Plaintext
 lib/
 ├── data/           # Static configuration & onboarding static data
