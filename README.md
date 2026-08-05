@@ -1,81 +1,92 @@
-# Travello - Modern Travel UI 
+# 🌍 Travello - Modern E-Commerce & Travel Mobile App (v2 Refactored)
 
-A premium, high-fidelity mobile application UI built with **Flutter**. This project demonstrates professional UI implementation, focusing on pixel-perfect accuracy from Figma designs, smooth transitions, and clean, modular code.
+A high-fidelity, scalable Flutter mobile application demonstrating senior-level architecture, responsive UI execution, server-side pagination, and seamless integration with **Supabase BaaS**.
 
-## Repository Link
-[https://github.com/Ayaezz1101/task2](https://github.com/Ayaezz1101/task2)
+---
 
-## Key Features
-Secure Authentication: Fully integrated with Supabase Auth (Email/Password).
+## 🚀 Architectural & Technical Improvements
 
-Safety First (OTP): Implemented One-Time Password (OTP) verification for new sign-ups and password recovery.
+This repository represents the **V2 Architecture Refactor** of the Travello application. Key engineering highlights include:
 
-Dynamic Data Management: Products are no longer hardcoded; they are fetched dynamically from a PostgreSQL database on Supabase.
+* **Clean Separation of Concerns (SoC):** Decoupled UI components from business logic and network API callers via Service and Provider patterns.
+* **Server-Side Pagination & Dynamic Querying:** Optimized memory footprint by fetching datasets in ranges (`_pageSize = 10`) utilizing Supabase's `.range()` and dynamic filter query building.
+* **Type-Safe Deserialization:** Robust Model parsing preventing runtime type conflicts (e.g., safe casting for numbers and complex nested JSON arrays like `product_colors`).
+* **State Synchronization:** Global state provisioning via `Provider` (`ChangeNotifier`) with selective UI rebuilds.
+* **Defensive Exception Handling:** Complete protection against app crashes using async `try-catch` blocks and lifecycle context guards (`mounted` checks).
+* **Responsive Layout:** Engineered using `flutter_screenutil` to maintain pixel-perfect design accuracy across various screen densities.
 
-Smart Search & Filtering: Optimized Server-side queries to filter products and categories directly from the database for better performance.
+---
 
-Efficient State Management: Utilized Provider to manage data flow and ensure selective UI rebuilds, enhancing the app's responsiveness.
+## 🛠 Tech Stack
 
-Fully Responsive: Built using flutter_screenutil for consistent scaling across all devices.
+* **Frontend:** Flutter SDK (Dart)
+* **Backend as a Service (BaaS):** Supabase (PostgreSQL, Authentication)
+* **State Management:** Provider Pattern (`ChangeNotifier`)
+* **Responsive Design:** `flutter_screenutil`
+* **Custom Navigation:** Custom `PageRouteBuilder` with `FadeTransition`
 
-## Tech Stack
-Frontend: Flutter SDK (Dart)
+---
 
-Backend as a Service (BaaS): Supabase
-
-Database: PostgreSQL (Cloud-hosted)
-
-State Management: Provider
-
-Environment: Developed on Windows via WSL/Ubuntu & VS Code.
-
-## Application Screenshots
+## 📱 Application Screenshots
 
 ### Splash & Onboarding
 | Splash Screen | Step 1 | Step 2 | Step 3 |
 | :---: | :---: | :---: | :---: |
-| <img src="assets\screenshots\splash.jpg" width="180"> | <img src="assets\screenshots\onboarding1.jpg" width="180"> | <img src="assets\screenshots\onboarding2.jpg" width="180"> | <img src="assets\screenshots\onboarding3.jpg" width="180"> |
+| <img src="assets/screenshots/splash.jpg" width="200"/> | <img src="assets/screenshots/onboarding1.jpg" width="200"/> | <img src="assets/screenshots/onboarding2.jpg" width="200"/> | <img src="assets/screenshots/onboarding3.jpg" width="200"/> |
 
-
-### authentication
-| sign in | sign up | verify | reset password |
+### Authentication
+| Sign In | Sign Up | Verify (OTP) | Reset Password |
 | :---: | :---: | :---: | :---: |
-| <img src="assets\screenshots\signin.jpg" width="180"> | <img src="assets\screenshots\signup.jpg" width="180"> | <img src="assets\screenshots\verify screen.jpg" width="180"> | <img src="assets\screenshots\reset password.jpg" width="180"> |
+| <img src="assets/screenshots/signin.jpg" width="200"/> | <img src="assets/screenshots/signup.jpg" width="200"/> | <img src="assets/screenshots/verify screen.jpg" width="200"/> | <img src="assets/screenshots/reset password.jpg" width="200"/> |
 
-### home && details
-| home | details |
+### Home & Details
+| Home Screen | Product Details |
 | :---: | :---: |
-| <img src="assets\screenshots\home screen.jpg" width="180"> | <img src="assets\screenshots\details screen.jpg" width="180"> | 
+| <img src="assets/screenshots/home screen.jpg" width="250"/> | <img src="assets/screenshots/details screen.jpg" width="250"/> |
 
+---
 
+## ⚙️ App Initialization & Core Engineering Highlights
 
-## Installation
+### Native Binding & Service Bootstrapping
+Guaranteed platform channel initialization before executing asynchronous BaaS calls:
+```dart
+WidgetsFlutterBinding.ensureInitialized();
+await Supabase.initialize(
+  url: 'YOUR_SUPABASE_URL',
+  anonKey: 'YOUR_SUPABASE_ANON_KEY',
+);
+Dynamic Hex Color Deserialization
+Parsing server hex-coded strings directly into Flutter-native Color objects:
 
+Dart
+Color(int.parse(map['color_code']))
+💻 Installation
 Follow these steps to run the project locally:
 
-1.  **Clone the repository**:
-    ```bash
-    git clone [https://github.com/Ayaezz1101/task2.git](https://github.com/Ayaezz1101/task2.git)
-    ```
-2.  **Navigate to project directory**:
-    ```bash
-    cd task2
-    ```
-3.  **Install dependencies**:
-    ```bash
-    flutter pub get
-    ```
-4.  **Run the app**:
-    ```bash
-    flutter run
-    ```
+Clone the repository:
 
-## Project Structure
-```text
+Bash
+git clone [https://github.com/Ayaezz1101/travello-app-v2.git](https://github.com/Ayaezz1101/travello-app-v2.git)
+Navigate to project directory:
+
+Bash
+cd travello-app-v2
+Install dependencies:
+
+Bash
+flutter pub get
+Run the app:
+
+Bash
+flutter run
+📁 Project Structure
+Plaintext
 lib/
-├── providers/      # Centralized State Management (Product & Auth Providers)
-├── models/         # Data models for Supabase integration
-├── theme/          # Global AppTheme and color constants
-├── services/       # Supabase client & API services
-├── widgets/        # Reusable UI components (CustomTextField, OTPBox...)
-└── pages/          # Screen implementations (splash , onboarding ,Auth, Home, details)
+├── data/           # Static configuration & onboarding static data
+├── model/          # Strongly-typed data models (Product, ColorOption)
+├── pages/          # View/Screen layer (Splash, Auth, Home, Details)
+├── providors/      # Centralized reactive state management (ProductProvider)
+├── srvices/        # Auth & API services encapsulation + Custom Transitions
+├── theme/          # App ThemeData & design constants
+└── wigets/         # Atomic modular UI components (Cards, TextFields, Buttons)
