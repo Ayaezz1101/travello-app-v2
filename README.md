@@ -56,12 +56,8 @@ await Supabase.initialize(
   url: 'YOUR_SUPABASE_URL',
   anonKey: 'YOUR_SUPABASE_ANON_KEY',
 );
-Dynamic Hex Color Deserialization
-Parsing server hex-coded strings directly into Flutter-native Color objects:
 
-Dart
-Color(int.parse(map['color_code']))
-💻 Installation
+### 💻 Installation
 Follow these steps to run the project locally:
 
 Clone the repository:
