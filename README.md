@@ -68,8 +68,8 @@ Guaranteed platform channel initialization before executing asynchronous BaaS ca
     anonKey: 'YOUR_SUPABASE_ANON_KEY',
     );
    ```
- ---
-## Dynamic Hex Color Deserialization
+
+### Dynamic Hex Color Deserialization
 Parsing server hex-coded strings directly into Flutter-native Color objects:
     ```dart
     Color(int.parse(map['color_code']))
@@ -109,3 +109,4 @@ lib/
 ├── srvices/        # Auth & API services encapsulation + Custom Transitions
 ├── theme/          # App ThemeData & design constants
 └── wigets/         # Atomic modular UI components (Cards, TextFields, Buttons)
+---
