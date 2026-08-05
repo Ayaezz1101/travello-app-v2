@@ -61,35 +61,43 @@ This repository represents the **V2 Architecture Refactor** of the Travello appl
 ### Native Binding & Service Bootstrapping
 Guaranteed platform channel initialization before executing asynchronous BaaS calls:
 
-WidgetsFlutterBinding.ensureInitialized();
-await Supabase.initialize(
-  url: 'YOUR_SUPABASE_URL',
-  anonKey: 'YOUR_SUPABASE_ANON_KEY',
-);
-
-### Dynamic Hex Color Deserialization
+    ```dart
+    WidgetsFlutterBinding.ensureInitialized();
+    await Supabase.initialize(
+    url: 'YOUR_SUPABASE_URL',
+    anonKey: 'YOUR_SUPABASE_ANON_KEY',
+    );
+   ```
+## Dynamic Hex Color Deserialization
 Parsing server hex-coded strings directly into Flutter-native Color objects:
-
+```dart
 Color(int.parse(map['color_code']))
-
+```
 ## 💻 Installation
 Follow these steps to run the project locally:
 
 Clone the repository:
 
-git clone [https://github.com/Ayaezz1101/travello-app-v2.git](https://github.com/Ayaezz1101/travello-app-v2.git)
+```bash
+git clone https://github.com/Ayaezz1101/travello-app-v2.git
+```
 
 Navigate to project directory:
+
+```bash
 cd travello-app-v2
-
+```
 Install dependencies:
+
+```bash
 flutter pub get
-
+```
 Run the app:
-flutter run
 
+```bash
+flutter run
+```
 ## 📁 Project Structure
-Plaintext
 lib/
 ├── data/           # Static configuration & onboarding static data
 ├── model/          # Strongly-typed data models (Product, ColorOption)
